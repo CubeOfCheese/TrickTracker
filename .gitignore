@@ -1,2 +1,8 @@
 # Google App Engine generated folder
 appengine-generated/
+target/TrickTracker-1.war
+target/TrickTracker-1/WEB-INF/lib/appengine-api-1.0-sdk-1.9.59.jar
+target/maven-archiver/pom.properties
+target/trickTracker-1.war
+target/trickTracker-1/WEB-INF/lib/appengine-api-1.0-sdk-1.9.59.jar
+target/tricktracker-1.war
