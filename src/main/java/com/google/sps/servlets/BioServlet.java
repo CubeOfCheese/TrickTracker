@@ -34,7 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @WebServlet("/bio")
-public class UserServlet extends HttpServlet {
+public class BioServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -85,7 +85,7 @@ public class UserServlet extends HttpServlet {
       String aboutme = request.getParameter("aboutme");
 
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
-      Entity entity = new Entity("UserBiography", id)
+      Entity entity = new Entity("UserBiography", id);
       entity.setProperty("id", id); 
       entity.setProperty("name", name);
       entity.setProperty("age", age);
@@ -95,7 +95,7 @@ public class UserServlet extends HttpServlet {
       datastore.put(entity);
   }
 
-  private boolean hasBiography(string id) {
+  private boolean hasBiography(String id) {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
     Query query =
         new Query("UserBiography")

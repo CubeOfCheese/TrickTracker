@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 
 @WebServlet("/landing")
-public class UserServlet extends HttpServlet {
+public class LandingServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -52,7 +52,7 @@ public class UserServlet extends HttpServlet {
     }
   }
 
-  private boolean hasBiography(string id) {
+  private boolean hasBiography(String id) {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
     Query query =
         new Query("UserBiography")
