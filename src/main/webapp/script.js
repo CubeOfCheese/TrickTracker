@@ -31,6 +31,6 @@ async function loadBio() {
   document.getElementById("aboutme").value = bioInformation["aboutme"];
 }
 
-$("#profile").click(function(e) {
-    $("#image").click();
-});
+function uploadProfile() {
+  document.getElementById("image").click();
+}
