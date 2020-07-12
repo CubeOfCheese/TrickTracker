@@ -39,16 +39,16 @@ public class LandingServlet extends HttpServlet {
     UserService userService = UserServiceFactory.getUserService();
 
     if (!userService.isUserLoggedIn()) {
-        String loginURL = userService.createLoginURL("/dropin");
+        String loginURL = userService.createLoginURL("/dropin.html");
         response.getWriter().println(loginURL);
         return; 
     }
 
     boolean hasBiography = hasBiography(userService.getCurrentUser().getUserId()); 
     if (hasBiography) {
-        response.sendRedirect("/home"); 
+        response.sendRedirect("/home.html"); 
     } else {
-        response.sendRedirect("/bio"); 
+        response.sendRedirect("/bio.html"); 
     }
   }
 

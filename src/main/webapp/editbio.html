@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Trick Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="script.js"></script>
+  </head>
+  <body onload="loadBio()">
+    <div class="bio">
+        <form id="bio-form">
+            <label for="image">Profile Photo</label> <br>
+            <img src="images/default.jpg" id="profile"> <br> <br>
+            <input type="file" id="image" name="image" style="display:none;">
+            <label for="name">Name</label> <br>
+            <input type="text" id="name" name="name"> <br> <br>
+            <label for="age">Age</label> <br>
+            <input type="text" id="age" name="age"> <br> <br>
+            <label for="gender">Gender</label> <br>
+            <input type="text" id="gender" name="gender"> <br> <br>
+            <label for="aboutme">About Me</label> <br>
+            <textarea id="aboutme" name="aboutme"></textarea>
+        </form>
+    </div>
+  </body>
+</html>

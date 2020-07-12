@@ -17,3 +17,20 @@ async function loginStatus() {
   const text = await response.text();
   document.getElementById("button").setAttribute("href", text);    
 }
+
+async function loadBio() {
+  const blobURLResponse = await fetch('/blobstore-upload-url'); 
+  const bloblURL = await bloblURLResponse.text();
+  document.getElementById("bio-form").action = bloblURL;
+  const bioInformationResponse = await fetch('/bioGet'); 
+  const bioInformation = await bioInformationResponse.json();
+  document.getElementById("profile").setAttribute("src", bioInformation["images"]); 
+  document.getElementById("name").value = bioInformation["name"];
+  document.getElementById("age").value = bioInformation["age"];
+  document.getElementById("gender").value = bioInformation["gender"];
+  document.getElementById("aboutme").value = bioInformation["aboutme"];
+}
+
+$("#profile").click(function(e) {
+    $("#image").click();
+});

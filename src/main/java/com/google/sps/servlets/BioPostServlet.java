@@ -14,12 +14,20 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.blobstore.BlobInfo;
+import com.google.appengine.api.blobstore.BlobInfoFactory;
+import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobstoreService;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesServiceFactory;
+import com.google.appengine.api.images.ServingUrlOptions;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson; 
@@ -33,79 +41,68 @@ import java.util.ArrayList;
 import java.util.HashMap; 
 import java.util.Map;
 
-@WebServlet("/bio")
-public class BioServlet extends HttpServlet {
-
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      response.setContentType("application/json");
-      
-      UserService userService = UserServiceFactory.getUserService();
-      if (!userService.isUserLoggedIn()) {
-          response.sendRedirect("/dropin");
-          return; 
-      }
-        
-      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
-      Query query =
-          new Query("UserBiography")
-              .setFilter(new Query.FilterPredicate("id", Query.FilterOperator.EQUAL, userService.getCurrentUser().getUserId()));
-      PreparedQuery results = datastore.prepare(query);
-      Entity entity = results.asSingleEntity(); 
-
-      if (entity == null) {
-          response.getWriter().println("");
-          return;
-      } 
-
-      Map<String, String> values = new HashMap<String, String>();
-      values.put("name", (String) entity.getProperty("name"));
-      values.put("age", (String) entity.getProperty("age"));
-      values.put("gender", (String) entity.getProperty("gender"));
-      values.put("aboutme", (String) entity.getProperty("aboutme"));
-
-      Gson gson = new Gson(); 
-      String json = gson.toJson(values);
-
-      response.getWriter().println(json);
-  }
+@WebServlet("/bio-post")
+public class BioPostServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
       UserService userService = UserServiceFactory.getUserService();
       if (!userService.isUserLoggedIn()) {
-          response.sendRedirect("/dropin");
+          response.sendRedirect("/dropin.html");
           return; 
       }  
 
       String id = userService.getCurrentUser().getUserId(); 
+      String image = getUploadedFileUrl(request, "image");
       String name = request.getParameter("name");
       String age = request.getParameter("age");
       String gender = request.getParameter("gender");
       String aboutme = request.getParameter("aboutme");
 
+      if (image == null) {
+          image = "images/default.jpg";
+      }
+
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
       Entity entity = new Entity("UserBiography", id);
       entity.setProperty("id", id); 
+      entity.setProperty("image", image);
       entity.setProperty("name", name);
       entity.setProperty("age", age);
       entity.setProperty("gender", gender); 
       entity.setProperty("aboutme", aboutme);
 
       datastore.put(entity);
+
+      response.sendRedirect("/editbio.html");
   }
 
-  private boolean hasBiography(String id) {
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
-    Query query =
-        new Query("UserBiography")
-            .setFilter(new Query.FilterPredicate("id", Query.FilterOperator.EQUAL, id));
-    PreparedQuery results = datastore.prepare(query);
-    Entity entity = results.asSingleEntity();
-    if (entity == null) {
-        return false; 
+  private String getUploadedFileUrl(HttpServletRequest request, String formInputElementName) {
+    BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+    Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(request);
+    List<BlobKey> blobKeys = blobs.get("image");
+
+    if (blobKeys == null || blobKeys.isEmpty()) {
+      return null;
     }
-    return true;       
+
+    int index = blobKeys.size() - 1; 
+    BlobKey blobKey = blobKeys.get(index); /* Grab the most recent uploaded image */
+
+    BlobInfo blobInfo = new BlobInfoFactory().loadBlobInfo(blobKey);
+    if (blobInfo.getSize() == 0) {
+      blobstoreService.delete(blobKey);
+      return null;
+    }
+
+    ImagesService imagesService = ImagesServiceFactory.getImagesService();
+    ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(blobKey);
+    String url = imagesService.getServingUrl(options);
+
+    if (url.startsWith("http://localhost:8080/")) {
+      url = url.replace("http://localhost:8080/", "/");
+    }
+    return url;
   }
 
 }
