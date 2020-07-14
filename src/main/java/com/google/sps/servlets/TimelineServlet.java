@@ -12,6 +12,10 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.*;
+import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.sps.data.TrickNode;
+import com.google.appengine.api.users.*;
 import com.google.gson.Gson;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -19,26 +23,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Date; 
 
 /** Servlet that handles Timeline node data */
 @WebServlet("/timeline_data")
 public class TimelineServlet extends HttpServlet {
 
   public TimelineServlet() {}
-
-    class TrickNode {
-      public String trick_name;
-      public String date;
-      public String link;
-      public String notes;
-
-      public TrickNode(String trick_name, String date, String link, String notes) {
-          this.trick_name = trick_name;
-          this.date = date;
-          this.link = link;
-          this.notes = notes;
-      }
-  }
 
   private String toGson(ArrayList<TrickNode> tricks) {
     Gson gson = new Gson();
@@ -49,16 +40,30 @@ public class TimelineServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // a function that will handle retrieving a user's tricks
-    // for now we only send dummy data
     response.setContentType("application/json;");
+    // note: assuming that a user will always be logged in
+    UserService userService = UserServiceFactory.getUserService();
+    User user = userService.getCurrentUser();
+    String userId = user.getUserId();
+
+    Key userKey = KeyFactory.createKey("Trick", userId);
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    Query query = new Query("Trick").addSort("date", SortDirection.DESCENDING);
+    PreparedQuery results = datastore.prepare(query);
+
+    // retrieve user tricks 
+    // prints empty json is user has no tricks
     ArrayList<TrickNode> tricks = new ArrayList<TrickNode>();
+    for (Entity entity : results.asIterable()) {
+      String trick_name = (String) entity.getProperty("trick_name");
+      long date = (long) entity.getProperty("date");
+      String link = (String) entity.getProperty("link");
+      String notes = (String) entity.getProperty("notes");
 
-    tricks.add(new TrickNode("Shuvit", "2018-10-25T03:24:00", "https://www.youtube.com/watch?v=5gJl69sBRnw", "Didn't take long!"));
-    tricks.add(new TrickNode("Ollie", "2018-10-27T06:10:59", "https://www.youtube.com/watch?v=851cTIcNuDU", "Easier said than done"));
-    tricks.add(new TrickNode("Nollie", "2018-10-30T11:42:22", "https://www.youtube.com/watch?v=Vj9OIDO3uuU", "*shivers*"));
-    tricks.add(new TrickNode("Pop Shuvit", "2018-11-10T10:01:43", "https://www.youtube.com/watch?v=XmuBAdiSvbE", "I'm flying!"));
-    tricks.add(new TrickNode("KickFlip", "2019-02-23T03:45:02", "https://www.youtube.com/watch?v=OsXOGs17PAs", "Thanks Bobby for the moral support."));
-
+      TrickNode trick = new TrickNode(trick_name, date, link, notes);
+      tricks.add(trick);
+    }
     response.getWriter().println(toGson(tricks));
+    response.sendRedirect("/timeline.html");
   }
 }
