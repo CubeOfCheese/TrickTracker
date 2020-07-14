@@ -1,0 +1,37 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+#timeline-container {
+    display: inline;
+    position: absolute;
+    right: calc(50vw + 2em);
+    top: 50%;
+}
+#event-add-button {
+    cursor: pointer;
+    position: absolute;
+}
+#event-add-button > * {
+    text-decoration: none;
+    color: black;
+}
+#timeline {
+    display: inline;
+}
+.timeline-node {
+    cursor: default;
+}
+#event-container {
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-top: black solid 1px;
+    bottom: 0px;
+}
