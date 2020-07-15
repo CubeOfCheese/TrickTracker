@@ -10,12 +10,15 @@
       <div class="form-header">
         <h2>Add Trick:</h2>
       </div>
-      <form style="margin:10px;input" action="/timeline_data" method="POST">
+      <form style="margin:10px;input" action="/add_trick" method="POST">
         <label for="trick-name">Trick name:</label><br>
         <input type="text" id="trick-name" name="trick-name" placeholder="Ollie"><br>
  
-        <label for="media">Media Link:</label><br>
-        <input type="text" id="media" name="media" placeholder="www.youtube.com"><br>
+        <label for="link">Media Link:</label><br>
+        <input type="text" id="link" name="link" placeholder="www.youtube.com"><br>
+
+        <label for="date">Date completed:</label><br>
+        <input type="date" id="date" name="date"><br>
 
         <label for="notes">Notes:</label><br>
         <input type="text" id="notes" name="notes"><br>

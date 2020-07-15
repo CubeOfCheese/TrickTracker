@@ -19,6 +19,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;  
 import java.util.ArrayList;
 import java.util.Date; 
 
@@ -34,9 +36,21 @@ public class AddTrickServlet extends HttpServlet {
     User user = userService.getCurrentUser();
     String userId = user.getUserId();
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    Key userKey = KeyFactory.createKey("Timeline", userId);
+    Key userKey = KeyFactory.createKey("Timeline", 123);
     
-    Date date = new Date(); // not in proper format so re-check this later
+    Date date;
+    /* SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd"); 
+    ParsePosition ps = new ParsePosition(0); 
+    try {
+      String formDate = request.getParameter("date");
+      date = formatter.parse(formDate, ps);
+    }
+    catch (Exception e) {
+      String formDate = request.getParameter("date");
+      System.out.println("Date parsing failed when adding a trick to store; auto creating new date");
+      System.out.println(formDate); */
+      date = new Date();
+    // }
 
     // create entity from request form
     Entity newTrick = new Entity("Trick", userKey);
