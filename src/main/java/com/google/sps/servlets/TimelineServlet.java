@@ -19,9 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
 
 /** Servlet that handles Timeline node data */
 @WebServlet("/timeline_data")
@@ -64,3 +61,4 @@ public class TimelineServlet extends HttpServlet {
 
     response.getWriter().println(toGson(tricks));
   }
+}

@@ -4,16 +4,34 @@ function addNode() {
     timeline.innerHTML = timeline.innerHTML.concat("<span class=\"timeline-node\"><>--</span>");
 }
 
-function results() {
-    var skateStyle = document.getElementById('skate-style').value;
-    var trickName = document.getElementById('trick-name').value;
-    var date = document.getElementById('date').value;
-    var media = document.getElementById('media').value;
-    var notes = document.getElementById('notes').value;
+function loadResults() {
+  fetch('/timeline_data').then(response => response.json()).then((tricks) => {
+    const trickNode = document.getElementById('trick-results');
+    tricks.forEach((trick) => {
+      trickNode.appendChild(createTrickElement(trick));
+    })
+  });
+}
 
-    document.write("<h3>Skate Style: </h3>" + skateStyle + "<br/>")
-    document.write("<h3>Trick: </h3>" + trickName + "<br/>")
-    document.write("<h3>Date: </h3>" + date + "<br/>")
-    document.write("<h3>Media link: </h3>" + media + "<br/>")
-    document.write("<h3>Notes: </h3>" + notes + "<br/>")
+function createTrickElement(trick) {
+  const trickElement = document.createElement('li');
+  trickElement.TrickNode = 'trick-container';
+
+  const trickNameElement = document.createElement('span');
+  trickElement.innerText = trick.trick_name;
+
+  const dateElement = document.createElement('span');
+  trickElement.innerText = trick.date;
+
+  const linkElement = document.createElement('span');
+  trickElement.innerText = trick.link;
+
+  const notesElement = document.createElement('span');
+  trickElement.innerText = trick.notes;
+
+  trickElement.appendChild(trickNameElement);
+  trickElement.appendChild(dateElement);
+  trickElement.appendChild(linkElement);
+  trickElement.appendChild(notesElement);
+  return trickElement;
 }
