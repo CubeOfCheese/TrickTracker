@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Timeline</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+     <img src="images/colorBlockStripe.jpg" class="stripe"/>
+     <div class="profCard">
+         <img src="images/profpic.jpg" class="profPicDefault"/>
+         <h1>Name</h1>
+         <h2>Skate Type</h2>
+         <p class=bioText>Bio sample: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+         <a href="editbio.html" class="editButton">Edit</a>
+      </div>
+      <div id="timeline-container">
+          <div id="timeline">
+              <span class="timeline-node"><>--</span>
+          </div>
+          <span id="event-add-button" onclick="addNode()"><a href="/trickeditpage.html"><+></a></span>
+      </div>
+      <div id="event-container">
+          <p id="skate-style">Skate Style: </p>
+          <p id="trick-name">Trick: </p>
+          <p id="date">Date: </p>
+          <p id="link">Link: </p>
+      </div>
+    
+      <script src="timeline.js"></script>
+  </body>
+</html>
