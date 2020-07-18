@@ -14,7 +14,7 @@ function loadResults() {
 }
 
 function createTrickElement(trick) {
-  const trickElement = document.createElement('li');
+  const trickElement = document.createElement('div')
   trickElement.TrickNode = 'trick-container';
 
   const trickNameElement = document.createElement('span');
