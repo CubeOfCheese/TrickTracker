@@ -6,7 +6,7 @@ function addNode() {
 
 function loadResults() {
   fetch('/timeline_data').then(response => response.json()).then((tricks) => {
-    const trickNode = document.getElementById('trick-results');
+    const trickNode = document.getElementById('timeline');
     tricks.forEach((trick) => {
       trickNode.appendChild(createTrickElement(trick));
     })
@@ -15,7 +15,7 @@ function loadResults() {
 
 function createTrickElement(trick) {
   const trickElement = document.createElement('div')
-  trickElement.TrickNode = 'trick-container';
+
 
   const trickNameElement = document.createElement('span');
   trickNameElement.innerText = trick.trick_name;
