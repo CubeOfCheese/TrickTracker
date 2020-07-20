@@ -6,12 +6,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="script.js"></script>
-    <script src="global_assets/js/main/jquery.min.js"></script>
   </head>
   <body onload="loadBio()">
     <div class="bio">
         <br>
-        <form id="bio-form">
+        <form id="bio-form" method="POST">
             <label for="image">Profile Photo</label> <br>
             <img src="images/default.jpg" id="profile" onclick="uploadProfile()"> <br> <br>
             <input type="file" id="image" name="image" style="display: none;">
@@ -22,7 +21,8 @@
             <label for="gender">Gender</label> <br>
             <input type="text" id="gender" name="gender"> <br> <br>
             <label for="aboutme">About Me</label> <br>
-            <textarea id="aboutme" name="aboutme"></textarea>
+            <textarea id="aboutme" name="aboutme"></textarea> <br> <br>
+            <input type="submit"/>
         </form>
     </div>
   </body>

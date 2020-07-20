@@ -13,22 +13,27 @@
 // limitations under the License.
 
 async function loginStatus() {
-  const response = await fetch('/landing');
-  const text = await response.text();
-  document.getElementById("button").setAttribute("href", text);    
+    const response = await fetch('/landing');
+    if (response.redirected) {
+        window.location.href = response.url;       
+    } else {
+        const text = await response.text();
+        document.getElementById("button").setAttribute("href", text);   
+    } 
 }
 
 async function loadBio() {
   const blobURLResponse = await fetch('/blobstore-upload-url'); 
-  const bloblURL = await bloblURLResponse.text();
+  const bloblURL = await blobURLResponse.text();
+  console.log(bloblURL);
   document.getElementById("bio-form").action = bloblURL;
-  const bioInformationResponse = await fetch('/bioGet'); 
+  const bioInformationResponse = await fetch('/bio-get'); 
   const bioInformation = await bioInformationResponse.json();
-  document.getElementById("profile").setAttribute("src", bioInformation["images"]); 
-  document.getElementById("name").value = bioInformation["name"];
-  document.getElementById("age").value = bioInformation["age"];
-  document.getElementById("gender").value = bioInformation["gender"];
-  document.getElementById("aboutme").value = bioInformation["aboutme"];
+  document.getElementById("profile").setAttribute("src", bioInformation.image); 
+  document.getElementById("name").value = bioInformation.name;
+  document.getElementById("age").value = bioInformation.age;
+  document.getElementById("gender").value = bioInformation.gender;
+  document.getElementById("aboutme").value = bioInformation.aboutme;
 }
 
 function uploadProfile() {
