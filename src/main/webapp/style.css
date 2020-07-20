@@ -23,7 +23,7 @@
 .box {
   height: 135px;
   width: 120%;
-  background-color: #E3EBFF;
+  background-color: #D3DAFF;
   position: relative;
   display: block;
   top: -107px;
@@ -70,7 +70,7 @@ h2 {
     font-family: robotoLight;
     position: relative;
     top: -100px;
-    left: 232px;
+    left: 235px;
 }
 
 .bioText {
@@ -85,5 +85,5 @@ h2 {
     font-family: robotoThin;
     position: relative;
     top: -110px;
-    left: 430px;
+    left: 427px;
 }
