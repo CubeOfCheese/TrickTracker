@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>TrickTracker</title>
+    <link rel="stylesheet" href="trickedit.css">
+  </head>
+  <body>
+    <div class="content">
+      <div class="form-header">
+        <h2>Add Trick:</h2>
+      </div>
+      <form style="margin:10px;input" action="/timeline_data" method="POST">
+        <label for="trick-name">Trick name:</label><br>
+        <input type="text" id="trick-name" name="trick-name" placeholder="Ollie"><br>
+ 
+        <label for="media">Media Link:</label><br>
+        <input type="text" id="media" name="media" placeholder="www.youtube.com"><br>
+
+        <label for="notes">Notes:</label><br>
+        <input type="text" id="notes" name="notes"><br>
+
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </body>
+</html>
