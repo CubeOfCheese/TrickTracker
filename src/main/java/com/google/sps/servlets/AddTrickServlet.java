@@ -33,11 +33,11 @@ public class AddTrickServlet extends HttpServlet {
 
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // note: assuming that a user will always be logged in
-    //UserService userService = UserServiceFactory.getUserService();
-    //User user = userService.getCurrentUser();
-    //String userId = user.getUserId();
+    UserService userService = UserServiceFactory.getUserService();
+    User user = userService.getCurrentUser();
+    String userId = user.getUserId();
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    Key userKey = KeyFactory.createKey("Timeline", 222); // replace 222 with user ID when user authentication is testable
+    //Key userKey = KeyFactory.createKey("Timeline", userId); // replace 222 with user ID when user authentication is testable
     
     Date date;
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH); 
@@ -54,6 +54,8 @@ public class AddTrickServlet extends HttpServlet {
     }
 
     // create entity from request form
+    // TO DO: avoid overwriting data
+    // name = userkey
     Entity newTrick = new Entity("Trick", userKey);
     newTrick.setProperty("trick-name", request.getParameter("trick-name"));
     newTrick.setProperty("link", request.getParameter("link"));

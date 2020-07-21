@@ -30,7 +30,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList; 
-import java.util.HashMap; 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/bio-get")
@@ -47,7 +48,7 @@ public class BioGetServlet extends HttpServlet {
       }
         
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
-      Query query =
+      Query query = // userbio = userid
           new Query("UserBiography")
               .setFilter(new Query.FilterPredicate("id", Query.FilterOperator.EQUAL, userService.getCurrentUser().getUserId()));
       PreparedQuery results = datastore.prepare(query);
