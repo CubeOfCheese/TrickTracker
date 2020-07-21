@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <title>TrickTracker</title>
     <link rel="stylesheet" href="trickedit.css">
+    <script src="timeline.js"></script>
   </head>
   <body>
     <div class="content">
       <div class="form-header">
         <h2>Add Trick:</h2>
       </div>
-      <form style="margin:10px;input" action="/add_trick" method="POST">
+
+      <form style="margin:10px;input" action="/add_trick" method="POST" onsubmit="return loadResults();>
+        <label for="skate-style">Skate style:</label><br>
+        <input type="text" id="skate-style" name="skate-style" placeholder="Longboarding"><br>
         <label for="trick-name">Trick name:</label><br>
         <input type="text" id="trick-name" name="trick-name" placeholder="Ollie"><br>
  

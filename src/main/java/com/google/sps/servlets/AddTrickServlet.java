@@ -32,18 +32,18 @@ public class AddTrickServlet extends HttpServlet {
   public AddTrickServlet() {}
 
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // note: assuming that a user will always be logged in
     UserService userService = UserServiceFactory.getUserService();
+    if (!userService.isUserLoggedIn()) {
+      response.sendRedirect("/dropin.html");
+      return; 
+    }
     User user = userService.getCurrentUser();
-    String userId = user.getUserId();
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    //Key userKey = KeyFactory.createKey("Timeline", userId); // replace 222 with user ID when user authentication is testable
-    
+        
     Date date;
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH); 
     ParsePosition ps = new ParsePosition(0); 
     String formDate = request.getParameter("date");
-    System.out.println("formdate " + formDate);
     try {
       date = formatter.parse(formDate, ps);
     }
@@ -54,13 +54,12 @@ public class AddTrickServlet extends HttpServlet {
     }
 
     // create entity from request form
-    // TO DO: avoid overwriting data
-    // name = userkey
-    Entity newTrick = new Entity("Trick", userKey);
+    Entity newTrick = new Entity("Trick");
     newTrick.setProperty("trick-name", request.getParameter("trick-name"));
     newTrick.setProperty("link", request.getParameter("link"));
     newTrick.setProperty("notes", request.getParameter("notes"));
     newTrick.setProperty("date", date.getTime());
+    newTrick.setProperty("id", user.getUserId());
     datastore.put(newTrick);
 
     response.sendRedirect("/timeline.html");

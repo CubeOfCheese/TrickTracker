@@ -75,7 +75,7 @@ public class BioPostServlet extends HttpServlet {
 
       datastore.put(entity);
 
-      response.sendRedirect("/editbio.html");
+      response.sendRedirect("/timeline.html");
   }
 
   private String getUploadedFileUrl(HttpServletRequest request, String formInputElementName) {

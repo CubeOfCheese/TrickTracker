@@ -48,7 +48,7 @@ public class BioGetServlet extends HttpServlet {
       }
         
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
-      Query query = // userbio = userid
+      Query query =
           new Query("UserBiography")
               .setFilter(new Query.FilterPredicate("id", Query.FilterOperator.EQUAL, userService.getCurrentUser().getUserId()));
       PreparedQuery results = datastore.prepare(query);
@@ -56,8 +56,8 @@ public class BioGetServlet extends HttpServlet {
 
       Map<String, String> values = new HashMap<String, String>();
 
-      if (entity == null) {
-        values.put("image", (String) entity.getPropety("image"));
+      if (entity != null) {
+        values.put("image", (String) entity.getProperty("image"));
         values.put("name", (String) entity.getProperty("name"));
         values.put("age", (String) entity.getProperty("age"));
         values.put("gender", (String) entity.getProperty("gender"));

@@ -46,9 +46,9 @@ public class LandingServlet extends HttpServlet {
 
     boolean hasBiography = hasBiography(userService.getCurrentUser().getUserId()); 
     if (hasBiography) {
-        response.sendRedirect("/home.html"); 
+        response.sendRedirect("/timeline.html"); 
     } else {
-        response.sendRedirect("/bio.html"); 
+        response.sendRedirect("/editbio.html"); 
     }
   }
 
