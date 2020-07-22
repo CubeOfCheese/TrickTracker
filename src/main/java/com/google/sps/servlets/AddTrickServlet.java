@@ -26,10 +26,8 @@ import java.util.Date;
 import java.util.Locale;
 
 /** Servlet that adds tricks to a user's timeline / datastore */
-@WebServlet("/add_trick")
+@WebServlet("/add-trick")
 public class AddTrickServlet extends HttpServlet {
-
-  public AddTrickServlet() {}
 
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // note: assuming that a user will always be logged in
