@@ -32,7 +32,6 @@ public class TimelineServlet extends HttpServlet {
   private String toGson(ArrayList<TrickNode> tricks) {
     Gson gson = new Gson();
     String json = gson.toJson(tricks);
-    System.out.println(json);
     return json;
   }
 
@@ -43,7 +42,7 @@ public class TimelineServlet extends HttpServlet {
 
     UserService userService = UserServiceFactory.getUserService();
     if (!userService.isUserLoggedIn()) {
-      response.sendRedirect("/dropin.html");
+      response.sendRedirect("/index.html");
       return; 
     }
     User user = userService.getCurrentUser();
