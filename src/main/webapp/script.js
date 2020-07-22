@@ -15,10 +15,9 @@
 async function loginStatus() {
     const response = await fetch('/landing');
     if (response.redirected) {
-        window.location.href = response.url;       
+        document.getElementById("dropInLink").setAttribute("href", "/editbio.html");   
     } else {
-        const text = await response.text();
-        document.getElementById("button").setAttribute("href", text);   
+        document.getElementById("dropInLink").setAttribute("href", "/timeline.html");   
     } 
 }
 
