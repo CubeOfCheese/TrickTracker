@@ -29,8 +29,6 @@ import java.util.Date;
 @WebServlet("/timeline_data")
 public class TimelineServlet extends HttpServlet {
 
-  public TimelineServlet() {}
-
   private String toGson(ArrayList<TrickNode> tricks) {
     Gson gson = new Gson();
     String json = gson.toJson(tricks);
@@ -68,7 +66,7 @@ public class TimelineServlet extends HttpServlet {
       TrickNode trick = new TrickNode(trick_name, date, link, notes);
       tricks.add(trick);
     }
-    response.getWriter().println(toGson(tricks));
-    response.sendRedirect("/timeline.html");
+    String responseBody = toGson(tricks);
+    response.getWriter().println(responseBody);
   }
 }

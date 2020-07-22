@@ -55,6 +55,7 @@ p {
   margin-left: auto;
   margin-right: auto;
   width: 900px;
+  background-color: white;
 }
 
 @font-face {
@@ -72,50 +73,70 @@ p {
    src: url(fonts/Roboto-Thin.ttf);
 }
 
-.profCard {
-  width: 450px;
-  border: 3px solid black;
-  background-color: white;
-  border-radius: 15%;
-  padding: 18px;
-  margin: 0 auto;
-  text-align: center;
-  z-index: 100;
+.box {
+  height: 135px;
+  width: 120%;
+  background-color: #D3DAFF;
   position: relative;
-  top: -200px;
+  display: block;
+  top: -107px;
+  left: -10px;
+}
+
+.logoTimeline {
+    height: 157.5px;
+    width: 210px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: -55px;
 }
 
 .profPicDefault {
     border-radius: 50%;
-    height: 130px;
-    width: 130px;
+    height: 170px;
+    width: 170px;
+    position: relative;
+    left: 30px;
+    top: -6px;
 }
 
-.stripe {
-    z-index: 1;
-    height: 200px;
-    width: 110%;
+.profInfo {
     position: relative;
-    left: -15px;
-    top: 110px;
+    top: -250px;
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 45px;
     line-height: .5;
     font-family: robotoRegular;
+    display: inline;
+    position: relative;
+    top: -95px;
+    left: 60px;
 }
 
 h2 {
-    font-size: 25px;
+    font-size: 22px;
     line-height: .5;
     font-family: robotoLight;
+    position: relative;
+    top: -100px;
+    left: 235px;
 }
 
 .bioText {
     font-family: robotoThin;
+    display: inline;
+    position: relative;
+    top: -158px;
+    left: 415px;
 }
 
 .editButton {
     font-family: robotoThin;
+    position: relative;
+    top: -110px;
+    left: 427px;
 }
