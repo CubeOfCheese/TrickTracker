@@ -36,24 +36,28 @@ public class TimelineServlet extends HttpServlet {
   }
 
   @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {    
     // a function that will handle retrieving a user's tricks
     response.setContentType("application/json;");
-    // note: assuming that a user will always be logged in
+
     UserService userService = UserServiceFactory.getUserService();
+    if (!userService.isUserLoggedIn()) {
+      response.sendRedirect("/index.html");
+      return; 
+    }
     User user = userService.getCurrentUser();
     String userId = user.getUserId();
-
-    Key userKey = KeyFactory.createKey("Trick", userId);
+    // note: not very secure considering we do no encyrption here
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    Query query = new Query("Trick").addSort("date", SortDirection.DESCENDING);
+    Query query =  new Query("Trick")
+        .setFilter(new Query.FilterPredicate("id", Query.FilterOperator.EQUAL, userId));
     PreparedQuery results = datastore.prepare(query);
 
     // retrieve user tricks 
     // prints empty json is user has no tricks
     ArrayList<TrickNode> tricks = new ArrayList<TrickNode>();
     for (Entity entity : results.asIterable()) {
-      String trick_name = (String) entity.getProperty("trick_name");
+      String trick_name = (String) entity.getProperty("trick-name");
       long date = (long) entity.getProperty("date");
       String link = (String) entity.getProperty("link");
       String notes = (String) entity.getProperty("notes");
