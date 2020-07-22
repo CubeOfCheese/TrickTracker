@@ -55,8 +55,8 @@ public class BioGetServlet extends HttpServlet {
 
       Map<String, String> values = new HashMap<String, String>();
 
-      if (entity == null) {
-        values.put("image", (String) entity.getPropety("image"));
+      if (entity != null) {
+        values.put("image", (String) entity.getProperty("image"));
         values.put("name", (String) entity.getProperty("name"));
         values.put("age", (String) entity.getProperty("age"));
         values.put("gender", (String) entity.getProperty("gender"));

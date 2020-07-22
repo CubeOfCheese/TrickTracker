@@ -11,18 +11,18 @@
       <div class="form-header">
         <h2>Add Trick:</h2>
       </div>
-      <form style="margin:10px;input" action="/timeline_data" method="POST" onsubmit="return loadResults();">
+
+      <form style="margin:10px;input" action="/add-trick" method="POST" onsubmit="return loadResults();>
         <label for="skate-style">Skate style:</label><br>
         <input type="text" id="skate-style" name="skate-style" placeholder="Longboarding"><br>
-        
         <label for="trick-name">Trick name:</label><br>
         <input type="text" id="trick-name" name="trick-name" placeholder="Ollie"><br>
-
-        <label for="date">Date:</label><br>
-        <input type="text" id="date" name="date"><br>
  
-        <label for="media">Media Link:</label><br>
-        <input type="text" id="media" name="media" placeholder="www.youtube.com"><br>
+        <label for="link">Media Link:</label><br>
+        <input type="text" id="link" name="link" placeholder="www.youtube.com"><br>
+
+        <label for="date">Date completed:</label><br>
+        <input type="date" id="date" name="date" required><br>
 
         <label for="notes">Notes:</label><br>
         <input type="text" id="notes" name="notes"><br>
