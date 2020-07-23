@@ -3,7 +3,6 @@ var timelineTricks;
 function loadResults() {
   fetch('/timeline_data').then(response => response.json()).then((tricks) => {
     timelineTricks = tricks;
-    console.log(timelineTricks);
     const timeline = document.getElementById('timeline');
     var counter = 0;
     tricks.forEach((trick) => {
