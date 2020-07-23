@@ -10,7 +10,7 @@
   <body onload="loadBio()">
     <div class="bio">
         <br>
-        <form id="bio-form" method="POST" action="/bio-post" enctype="multipart/form-data">
+        <form class="bioForm" id="bio-form" method="POST" action="/bio-post" enctype="multipart/form-data">
             <label for="image">Profile Photo</label> <br>
             <img src="images/default.jpg" id="profile" onclick="uploadProfile()"> <br> <br>
             <input type="file" id="image" name="image" style="display: none;">
