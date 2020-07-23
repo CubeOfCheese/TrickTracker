@@ -14,7 +14,7 @@ function loadResults() {
   const bioInformation = bioInformationResponse.json();
   document.getElementById("profPicDefault").setAttribute("src", bioInformation.image); 
   document.getElementById("name").value = bioInformation.name;
-  document.getElementById("bioInfo").value = bioInformation.age + ", " + bioInformation.pronounds;
+  document.getElementById("bioInfo").value = bioInformation.age + ", " + bioInformation.pronouns;
   document.getElementById("bioAboutme").value = bioInformation.aboutme; 
 }
 
