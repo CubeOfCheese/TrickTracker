@@ -12,7 +12,7 @@
         <h2>Add Trick:</h2>
       </div>
 
-      <form style="margin:10px;input" action="/add-trick" method="POST" onsubmit="return loadResults();>
+      <form style="margin:10px;input" action="/add-trick" method="POST" enctype="multipart/form-data">
         <label for="skate-style">Skate style:</label><br>
         <input type="text" id="skate-style" name="skate-style" placeholder="Longboarding"><br>
         <label for="trick-name">Trick name:</label><br>
@@ -26,6 +26,10 @@
 
         <label for="notes">Notes:</label><br>
         <input type="text" id="notes" name="notes"><br>
+
+        <label for="trick-media">Trick video/pic:</label><br>
+        <input type="file" id="trick-media" name="trick-media">
+
 
         <input type="submit" value="Submit">
       </form>
