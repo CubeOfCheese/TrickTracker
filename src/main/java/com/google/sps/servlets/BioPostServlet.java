@@ -57,7 +57,7 @@ public class BioPostServlet extends HttpServlet {
       String image = getUploadedFileUrl(request, "image");
       String name = request.getParameter("name");
       String age = request.getParameter("age");
-      String gender = request.getParameter("gender");
+      String pronouns = request.getParameter("pronouns");
       String aboutme = request.getParameter("aboutme");
 
       if (image == null) {
@@ -70,7 +70,7 @@ public class BioPostServlet extends HttpServlet {
       entity.setProperty("image", image);
       entity.setProperty("name", name);
       entity.setProperty("age", age);
-      entity.setProperty("gender", gender); 
+      entity.setProperty("pronouns", pronouns); 
       entity.setProperty("aboutme", aboutme);
 
       datastore.put(entity);

@@ -10,7 +10,7 @@
   <body onload="loadBio()">
     <div class="bio">
         <br>
-        <form id="bio-form" method="POST" action="/bio-post" enctype="multipart/form-data">
+        <form class="bioForm" id="bio-form" method="POST" action="/bio-post" enctype="multipart/form-data">
             <label for="image">Profile Photo</label> <br>
             <img src="images/default.jpg" id="profile" onclick="uploadProfile()"> <br> <br>
             <input type="file" id="image" name="image" style="display: none;">
@@ -18,8 +18,8 @@
             <input type="text" id="name" name="name"> <br> <br>
             <label for="age">Age</label> <br>
             <input type="text" id="age" name="age"> <br> <br>
-            <label for="gender">Gender</label> <br>
-            <input type="text" id="gender" name="gender"> <br> <br>
+            <label for="pronouns">Pronouns</label> <br>
+            <input type="text" id="pronouns" name="pronouns"> <br> <br>
             <label for="aboutme">About Me</label> <br>
             <textarea id="aboutme" name="aboutme"></textarea> <br> <br>
             <input type="submit"/>
