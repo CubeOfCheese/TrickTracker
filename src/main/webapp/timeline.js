@@ -3,6 +3,7 @@ var timelineTricks;
 function loadResults() {
   fetch('/timeline_data').then(response => response.json()).then((tricks) => {
     timelineTricks = tricks;
+    console.log(timelineTricks);
     const timeline = document.getElementById('timeline');
     var counter = 0;
     tricks.forEach((trick) => {
@@ -33,4 +34,5 @@ function displayTrick(nodeId) {
     document.getElementById("date").innerText = "Date: " + date.toDateString();
     document.getElementById("link").innerText = "Link: " + trick.link;
     document.getElementById("notes").innerText = "Notes: " + trick.notes;
+    document.getElementById("trick-media").setAttribute("src", trick.trick_media);
 }

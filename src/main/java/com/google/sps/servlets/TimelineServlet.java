@@ -62,8 +62,9 @@ public class TimelineServlet extends HttpServlet {
       long date = (long) entity.getProperty("date");
       String link = (String) entity.getProperty("link");
       String notes = (String) entity.getProperty("notes");
+      String trick_media = (String) entity.getProperty("trick-media");
 
-      TrickNode trick = new TrickNode(trick_name, date, link, notes, skate_style);
+      TrickNode trick = new TrickNode(trick_name, date, link, notes, skate_style, trick_media);
       tricks.add(trick);
     }
     String responseBody = toGson(tricks);

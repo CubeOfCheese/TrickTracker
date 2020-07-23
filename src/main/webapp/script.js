@@ -22,7 +22,7 @@ async function loginStatus() {
 }
 
 async function loadBio() {
-  const blobURLResponse = await fetch('/blobstore-upload-url'); 
+  const blobURLResponse = await fetch('/blobstore-upload-bio-url'); 
   const bloblURL = await blobURLResponse.text();
   document.getElementById("bio-form").action = bloblURL;
   const bioInformationResponse = await fetch('/bio-get'); 

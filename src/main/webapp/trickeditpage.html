@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <title>TrickTracker</title>
     <link rel="stylesheet" href="trickedit.css">
-    <script src="timeline.js"></script>
+    <script src="trickeditpage.js"></script>
   </head>
-  <body>
+  <body onload="loadTrickForm()">
     <div class="content">
       <div class="form-header">
         <h2>Add Trick:</h2>
       </div>
 
-      <form style="margin:10px;input" action="/add-trick" method="POST" enctype="multipart/form-data">
+      <form id="trick-form" class="hidden" style="margin:10px;input" action="/blobstore-upload-trick-url" method="POST" enctype="multipart/form-data">
         <label for="skate-style">Skate style:</label><br>
         <input type="text" id="skate-style" name="skate-style" placeholder="Longboarding"><br>
         <label for="trick-name">Trick name:</label><br>
