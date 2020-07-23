@@ -13,6 +13,13 @@ body {
     right: calc(50vw + 2em);
     top: 50%;
 }
+#timeline-add-node {
+    width: 5vw;
+}
+.timeline-node {
+    width: calc(5vw * 1.76); /* makes the node circle the same width as add-node circle */
+    cursor: pointer;
+}
 #event-add-button {
     cursor: pointer;
     position: absolute;
@@ -23,9 +30,6 @@ body {
 }
 #timeline {
     display: inline;
-}
-.timeline-node {
-    cursor: default;
 }
 #event-container {
     position: absolute;
