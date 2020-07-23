@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Timeline</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="timeline.css">
     <script src="timeline.js"></script>
   </head>
   <body onload="loadResults()">
@@ -17,10 +18,8 @@
           <button class="editButton"><a href="/editbio.html">Edit</a></button>
       </div>
       <div id="timeline-container">
-          <div id="timeline">
-              <span class="timeline-node"><>--</span>
-          </div>
-          <span id="event-add-button" onclick="addNode()"><a href="/trickeditpage.html"><+></a></span>
+          <div id="timeline"></div>
+          <span id="event-add-button" onclick="addNode()"><a href="/trickeditpage.html"><img id="timeline-add-node" src="images/timeline-add-node.svg"></a></span>
       </div>
       <div id="event-container">
           <p id="skate-style">Skate Style: </p>
