@@ -30,16 +30,10 @@ async function loadBio() {
   document.getElementById("profile").setAttribute("src", bioInformation.image); 
   document.getElementById("name").value = bioInformation.name;
   document.getElementById("age").value = bioInformation.age;
-  document.getElementById("gender").value = bioInformation.gender;
+  document.getElementById("pronouns").value = bioInformation.pronouns;
   document.getElementById("aboutme").value = bioInformation.aboutme;
 }
 
 function uploadProfile() {
   document.getElementById("image").click();
-}
-
-async function loadTimelineBio() {
-  const bioInformationResponse = await fetch('/bio-get'); 
-  const bioInformation = await bioInformationResponse.json();
-  
 }

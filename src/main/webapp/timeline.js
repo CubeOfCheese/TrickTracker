@@ -10,7 +10,14 @@ function loadResults() {
       counter++;
     })
   });
+  const bioInformationResponse = fetch('/bio-get'); 
+  const bioInformation = bioInformationResponse.json();
+  document.getElementById("profPicDefault").setAttribute("src", bioInformation.image); 
+  document.getElementById("name").value = bioInformation.name;
+  document.getElementById("bioInfo").value = bioInformation.age + ", " + bioInformation.pronouns;
+  document.getElementById("bioAboutme").value = bioInformation.aboutme; 
 }
+
 function createTrickElement(trick, number) {
     const trickElement = document.createElement('span');
     trickElement.classList.add("timeline-node");

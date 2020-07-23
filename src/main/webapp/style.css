@@ -94,7 +94,7 @@ p {
     top: -48px;
 }
 
-.profPicDefault {
+#profPicDefault {
     border-radius: 50%;
     height: 170px;
     width: 170px;
@@ -127,11 +127,11 @@ h2 {
     left: 235px;
 }
 
-.bioText {
+#bioAboutme {
     font-family: robotoThin;
     display: inline;
     position: relative;
-    top: -155px;
+    top: -147px;
     left: 415px;
 }
 
