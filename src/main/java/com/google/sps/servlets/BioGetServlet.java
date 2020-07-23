@@ -43,7 +43,7 @@ public class BioGetServlet extends HttpServlet {
       
       UserService userService = UserServiceFactory.getUserService();
       if (!userService.isUserLoggedIn()) {
-          response.sendRedirect("/dropin.html");
+          response.sendRedirect("/index.html");
           return; 
       }
         
@@ -72,7 +72,7 @@ public class BioGetServlet extends HttpServlet {
 
       Gson gson = new Gson(); 
       String json = gson.toJson(values);
-
+      System.out.println(json);
       response.getWriter().println(json);
   }
 

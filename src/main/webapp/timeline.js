@@ -10,12 +10,20 @@ function loadResults() {
       counter++;
     })
   });
-  const bioInformationResponse = fetch('/bio-get'); 
-  const bioInformation = bioInformationResponse.json();
-  document.getElementById("profPicDefault").setAttribute("src", bioInformation.image); 
-  document.getElementById("name").value = bioInformation.name;
-  document.getElementById("bioInfo").value = bioInformation.age + ", " + bioInformation.pronouns;
-  document.getElementById("bioAboutme").value = bioInformation.aboutme; 
+  fetch('/bio-get').then(response => response.json()).then((bioInformation) => {
+    document.getElementById("profPicDefault").setAttribute("src", bioInformation.image); 
+    document.getElementById("name").innerText = bioInformation.name;
+    document.getElementById("bioInfo").innerText = bioInformation.age + ", " + bioInformation.pronouns;
+    document.getElementById("bioAboutme").innerText = bioInformation.aboutme; 
+  })
+//   const bioInformationResponse = await fetch('/bio-get'); 
+//   console.log(bioInformationResponse);
+//   const bioInformation = await bioInformationResponse.json();
+//   console.log(bioInformation);
+// //   document.getElementById("profPicDefault").setAttribute("src", bioInformation.image); 
+//   document.getElementById("name").innerText = bioInformation.name;
+//   document.getElementById("bioInfo").innerText = bioInformation.age + ", " + bioInformation.pronouns;
+//   document.getElementById("bioAboutme").innerText = bioInformation.aboutme; 
 }
 
 function createTrickElement(trick, number) {
