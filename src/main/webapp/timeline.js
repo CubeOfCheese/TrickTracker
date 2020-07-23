@@ -1,55 +1,34 @@
-function addNode() {
-    var timeline = document.getElementById("timeline");
-    timeline.innerHTML = timeline.innerHTML.concat("<span class=\"timeline-node\"><>--</span>");
-}
+var timelineTricks;
 
 function loadResults() {
   fetch('/timeline_data').then(response => response.json()).then((tricks) => {
-    const trickNode = document.getElementById('timeline');
+    timelineTricks = tricks;
+    const timeline = document.getElementById('timeline');
+    var counter = 0;
     tricks.forEach((trick) => {
-      trickNode.appendChild(createTrickElement(trick));
+      timeline.appendChild(createTrickElement(trick, counter));
+      counter++;
     })
   });
 }
+function createTrickElement(trick, number) {
+    const trickElement = document.createElement('span');
+    trickElement.classList.add("timeline-node");
+    trickElement.setAttribute('onclick', "displayTrick("+number+")");
 
-function createTrickElement(trick) {
-  const trickElement = document.createElement('div')
+    const nodeImage = document.createElement('img');
+    nodeImage.classList.add("timeline-node");
+    nodeImage.src = "images/timeline-node-and-connector.svg";
 
+    trickElement.append(nodeImage);
 
-  const trickNameElement = document.createElement('span');
-  trickNameElement.innerText = trick.trick_name;
+    return trickElement;
+}
+function displayTrick(nodeId) {
+    var trick = timelineTricks[nodeId]
 
-  const dateElement = document.createElement('span');
-  dateElement.innerText = trick.date;
-
-  const linkElement = document.createElement('span');
-  linkElement.innerText = trick.link;
-
-  const notesElement = document.createElement('span');
-  notesElement.innerText = trick.notes;
-
-  var trickTitle = document.createTextNode("Trick: ");
-  var dateTitle = document.createTextNode("Date: ");
-  var linkTitle = document.createTextNode("Link: ");
-  var notesTitle = document.createTextNode("Notes: ");
-  var br1 = document.createElement("br");
-  var br2 = document.createElement("br");
-  var br3 = document.createElement("br");
-  var br4 = document.createElement("br");
-  var br5 = document.createElement("br");
-
-  trickElement.appendChild(trickTitle);
-  trickElement.appendChild(trickNameElement);
-  trickElement.appendChild(br1);
-  trickElement.appendChild(dateTitle);
-  trickElement.appendChild(dateElement);
-  trickElement.appendChild(br2);
-  trickElement.appendChild(linkTitle);
-  trickElement.appendChild(linkElement);
-  trickElement.appendChild(br3);
-  trickElement.appendChild(notesTitle);
-  trickElement.appendChild(notesElement);
-  trickElement.appendChild(br4);
-  trickElement.appendChild(br5);
-  return trickElement;
+    document.getElementById("trick-name").innerText = "Trick: " + trick.trick_name;
+    document.getElementById("date").innerText = "Date: " + trick.date;
+    document.getElementById("link").innerText = "Link: " + trick.link;
+    document.getElementById("notes").innerText = "Notes: " + trick.notes;
 }
