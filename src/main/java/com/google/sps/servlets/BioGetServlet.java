@@ -60,13 +60,13 @@ public class BioGetServlet extends HttpServlet {
         values.put("image", (String) entity.getProperty("image"));
         values.put("name", (String) entity.getProperty("name"));
         values.put("age", (String) entity.getProperty("age"));
-        values.put("gender", (String) entity.getProperty("gender"));
+        values.put("pronouns", (String) entity.getProperty("pronouns"));
         values.put("aboutme", (String) entity.getProperty("aboutme"));
       } else {
         values.put("image", "images/default.jpg");
         values.put("name", "");
         values.put("age", "");
-        values.put("gender", "");
+        values.put("pronouns", "");
         values.put("aboutme", "");
       }
 
