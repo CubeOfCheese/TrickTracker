@@ -33,4 +33,5 @@ function displayTrick(nodeId) {
     document.getElementById("date").innerText = "Date: " + date.toDateString();
     document.getElementById("link").innerText = "Link: " + trick.link;
     document.getElementById("notes").innerText = "Notes: " + trick.notes;
+    document.getElementById("trick-media").setAttribute("src", trick.trick_media);
 }
