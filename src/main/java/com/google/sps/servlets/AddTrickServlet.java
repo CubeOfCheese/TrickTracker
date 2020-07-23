@@ -53,6 +53,7 @@ public class AddTrickServlet extends HttpServlet {
 
     // create entity from request form
     Entity newTrick = new Entity("Trick");
+    newTrick.setProperty("skate-style", request.getParameter("skate-style"));
     newTrick.setProperty("trick-name", request.getParameter("trick-name"));
     newTrick.setProperty("link", request.getParameter("link"));
     newTrick.setProperty("notes", request.getParameter("notes"));

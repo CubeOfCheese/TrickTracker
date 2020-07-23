@@ -26,9 +26,11 @@ function createTrickElement(trick, number) {
 }
 function displayTrick(nodeId) {
     var trick = timelineTricks[nodeId]
-
+    var date = new Date(trick.date);
+    
+    document.getElementById("skate-style").innerText = "Skate Style: " + trick.skate_style;
     document.getElementById("trick-name").innerText = "Trick: " + trick.trick_name;
-    document.getElementById("date").innerText = "Date: " + trick.date;
+    document.getElementById("date").innerText = "Date: " + date.toDateString();
     document.getElementById("link").innerText = "Link: " + trick.link;
     document.getElementById("notes").innerText = "Notes: " + trick.notes;
 }

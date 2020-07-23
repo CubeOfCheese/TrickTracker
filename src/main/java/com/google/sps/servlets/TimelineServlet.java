@@ -57,12 +57,13 @@ public class TimelineServlet extends HttpServlet {
     // prints empty json is user has no tricks
     ArrayList<TrickNode> tricks = new ArrayList<TrickNode>();
     for (Entity entity : results.asIterable()) {
+      String skate_style = (String) entity.getProperty("skate-style");
       String trick_name = (String) entity.getProperty("trick-name");
       long date = (long) entity.getProperty("date");
       String link = (String) entity.getProperty("link");
       String notes = (String) entity.getProperty("notes");
 
-      TrickNode trick = new TrickNode(trick_name, date, link, notes);
+      TrickNode trick = new TrickNode(trick_name, date, link, notes, skate_style);
       tricks.add(trick);
     }
     String responseBody = toGson(tricks);
