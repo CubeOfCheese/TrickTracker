@@ -49,7 +49,6 @@ public class AddTrickServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     
     String image = getUploadedFileUrl(request, "trick-media");
-    System.out.println(image);
 
     Date date;
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH); 
