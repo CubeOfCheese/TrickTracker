@@ -18,7 +18,7 @@
     margin-left: -200px;
     margin-top: -200px; 
     text-align: center; 
-    background-color: rgb(0, 248, 248);
+    background-color: #D3DAFF;
 }
 
 h1 {
@@ -32,7 +32,7 @@ p {
 }
 
 #button {
-  background-color: rgb(0, 248, 248);
+  background-color: #D3DAFF;
   border: none;
   color: black;
   padding: 15px 32px;
@@ -75,12 +75,13 @@ p {
 
 .box {
   height: 135px;
-  width: 120%;
+  width: 100%;
   background-color: #D3DAFF;
   position: relative;
-  display: block;
-  top: -107px;
-  left: -10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  top: -102px;
+
 }
 
 .logoTimeline {
@@ -90,7 +91,7 @@ p {
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    top: -55px;
+    top: -48px;
 }
 
 .profPicDefault {
@@ -99,7 +100,7 @@ p {
     width: 170px;
     position: relative;
     left: 30px;
-    top: -6px;
+    top: -3px;
 }
 
 .profInfo {
@@ -113,7 +114,7 @@ h1 {
     font-family: robotoRegular;
     display: inline;
     position: relative;
-    top: -95px;
+    top: -92px;
     left: 60px;
 }
 
@@ -122,7 +123,7 @@ h2 {
     line-height: .5;
     font-family: robotoLight;
     position: relative;
-    top: -100px;
+    top: -97px;
     left: 235px;
 }
 
@@ -130,13 +131,17 @@ h2 {
     font-family: robotoThin;
     display: inline;
     position: relative;
-    top: -158px;
+    top: -155px;
     left: 415px;
 }
 
 .editButton {
     font-family: robotoThin;
     position: relative;
-    top: -110px;
+    top: -107px;
     left: 427px;
+}
+
+.bioForm {
+    font-family: robotoLight;
 }
