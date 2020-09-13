@@ -13,12 +13,15 @@
 // limitations under the License.
 
 async function loginStatus() {
-    const response = await fetch('/landing');
-    if (response.redirected) {
-        document.getElementById("dropInLink").setAttribute("href", "/editbio.html");   
-    } else {
-        document.getElementById("dropInLink").setAttribute("href", "/timeline.html");   
-    } 
+    fetch('/landing')
+    .then((response) => response.json())
+    .then((aresponse) => {
+        console.log(aresponse);
+
+        document.getElementById("dropInLink").setAttribute("href", aresponse);   
+        document.getElementById("logout-button").setAttribute("href", aresponse);   
+
+    });
 }
 
 async function loadBio() {

@@ -24,6 +24,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import java.io.PrintWriter;
 import java.io.IOException;
+import com.google.gson.Gson;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,20 +36,27 @@ public class LandingServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html"); 
+    response.setContentType("application/json"); 
     UserService userService = UserServiceFactory.getUserService();
+    System.out.println(userService.isUserLoggedIn());
 
     if (!userService.isUserLoggedIn()) {
-        String loginURL = userService.createLoginURL("/dropin.html");
-        response.getWriter().println(loginURL);
-        return; 
-    }
-
-    boolean hasBiography = hasBiography(userService.getCurrentUser().getUserId()); 
-    if (hasBiography) {
-        response.sendRedirect("/timeline.html"); 
-    } else {
-        response.sendRedirect("/editbio.html"); 
+        String urlToRedirectToAfterUserLogsIn = "/timeline.html";
+        String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
+        System.out.println(loginUrl);
+        Gson gson = new Gson();
+        String responseBody = gson.toJson(loginUrl);
+        response.getWriter().println(responseBody);
+        return;
+    } 
+    else {
+        String urlToRedirectToAfterUserLogsOut = "/index.html";
+        String logoutUrl = userService.createLogoutURL(urlToRedirectToAfterUserLogsOut);
+        System.out.println(logoutUrl);
+        Gson gson = new Gson();
+        String responseBody = gson.toJson(logoutUrl);
+        response.getWriter().println(responseBody);
+        return;
     }
   }
 

@@ -1,0 +1,59 @@
+#content {
+  margin-left: ;
+  margin-right: 50%;
+  width: 900px;
+  background-color: white;
+}
+
+@font-face {
+   font-family: 'robotoRegular';
+   src: url(fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+   font-family: 'robotoLight';
+   src: url(fonts/Roboto-Light.ttf);
+}
+
+@font-face {
+   font-family: 'robotoThin';
+   src: url(fonts/Roboto-Thin.ttf);
+}
+
+h1 {
+    font-size: 50px;
+    font-family: robotoLight;
+    text-align: center;
+    position:relative;
+    top: 100px;
+    z-index: 99;
+}
+
+h2 {
+    font-size: 25px;
+    font-family: robotoLight;
+    text-align: center;
+    position: relative;
+    top: 100px;
+    z-index: 100;
+}
+
+.logoIndex {
+    height: 450px;
+    width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+}
+
+#dropInButton {
+    font-family: robotoThin;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 101;
+    top: 555px;
+}

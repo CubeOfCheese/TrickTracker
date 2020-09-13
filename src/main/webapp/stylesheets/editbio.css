@@ -1,0 +1,147 @@
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 400px;
+    height: 400px;
+    margin-left: -200px;
+    margin-top: -200px; 
+    text-align: center; 
+}
+
+.bio {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 400px;
+    height: 450px;
+    margin-left: -200px;
+    margin-top: -200px; 
+    text-align: center; 
+    background-color: #D3DAFF;
+}
+
+h1 {
+    font-family: Verdana, Tahoma, sans-serif;
+    color: black; 
+}
+
+p {
+    font-family: Verdana, Tahoma, sans-serif;
+    color: black; 
+}
+
+#button {
+  background-color: #D3DAFF;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: Verdana, Tahoma, sans-serif;
+}
+
+#profile {
+  height: 100px;
+  width: 100px;  
+  border-radius: 50%; 
+  margin-bottom: 10px;
+  cursor: pointer; 
+}
+
+#content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+  background-color: white;
+}
+
+@font-face {
+   font-family: 'robotoRegular';
+   src: url(fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+   font-family: 'robotoLight';
+   src: url(fonts/Roboto-Light.ttf);
+}
+
+@font-face {
+   font-family: 'robotoThin';
+   src: url(fonts/Roboto-Thin.ttf);
+}
+
+.box {
+  height: 135px;
+  width: 100%;
+  background-color: #D3DAFF;
+  position: relative;
+  margin-left: 0px;
+  margin-right: 0px;
+  top: -102px;
+
+}
+
+.logoTimeline {
+    height: 157.5px;
+    width: 210px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: -48px;
+}
+
+#profPicDefault {
+    border-radius: 50%;
+    height: 170px;
+    width: 170px;
+    position: relative;
+    left: 30px;
+    top: -3px;
+}
+
+.profInfo {
+    position: relative;
+    top: -250px;
+}
+
+h1 {
+    font-size: 45px;
+    line-height: .5;
+    font-family: robotoRegular;
+    display: inline;
+    position: relative;
+    top: -92px;
+    left: 60px;
+}
+
+h2 {
+    font-size: 22px;
+    line-height: .5;
+    font-family: robotoLight;
+    position: relative;
+    top: -97px;
+    left: 235px;
+}
+
+#bioAboutme {
+    font-family: robotoThin;
+    display: inline;
+    position: relative;
+    top: -147px;
+    left: 415px;
+}
+
+.editButton {
+    font-family: robotoThin;
+    position: relative;
+    top: -107px;
+    left: 427px;
+}
+
+.bioForm {
+    font-family: robotoLight;
+}

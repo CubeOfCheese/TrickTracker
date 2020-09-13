@@ -45,6 +45,16 @@ public class TimelineServlet extends HttpServlet {
       response.sendRedirect("/index.html");
       return; 
     }
+    boolean hasBiography = hasBiography(userService.getCurrentUser().getUserId()); 
+    if (!hasBiography) {
+        System.out.println("No bio");
+        response.sendRedirect("/editbio.html"); 
+    }
+    if (!userService.isUserLoggedIn()) {
+      response.sendRedirect("/index.html");
+      return; 
+    }
+
     User user = userService.getCurrentUser();
     String userId = user.getUserId();
     // note: not very secure considering we do no encyrption here
@@ -69,5 +79,18 @@ public class TimelineServlet extends HttpServlet {
     }
     String responseBody = toGson(tricks);
     response.getWriter().println(responseBody);
+  }
+
+  private boolean hasBiography(String id) {
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
+    Query query =
+        new Query("UserBiography")
+            .setFilter(new Query.FilterPredicate("id", Query.FilterOperator.EQUAL, id));
+    PreparedQuery results = datastore.prepare(query);
+    Entity entity = results.asSingleEntity();
+    if (entity == null) {
+        return false; 
+    }
+    return true;       
   }
 }
