@@ -8,26 +8,30 @@
     <script src="timeline.js"></script>
   </head>
   <body onload="loadResults()">
-      <img src="images/logo.png" class="logoTimeline"/>
-      <div class='box'></div>
-      <div class="profInfo">
-          <img src="images/profpic.jpg" id="profPicDefault"/>
-          <h1 id="name"></h1>
-          <h2 id="bioInfo"></h2>  
-          <br>
-          <p id="bioAboutme"></p>
-          <button class="editButton"><a href="/editbio.html">Edit</a></button>
+      <div id="header">
+        <img src="images/logo.png" class="logoTimeline"/>
+        <div class='box'></div>
+        <div class="profInfo">
+            <img src="images/profpic.jpg" id="profPicDefault"/>
+            <h1 id="name"></h1>
+            <h2 id="bioInfo"></h2>
+            <br>
+            <p id="bioAboutme"></p>
+            <button class="editButton"><a href="/editbio.html">Edit</a></button>
+        </div>
       </div>
       <div id="timeline-container">
           <div id="timeline"></div>
           <span id="event-add-button" onclick="addNode()"><a href="/trickeditpage.html"><img id="timeline-add-node" src="images/timeline-add-node.svg"></a></span>
       </div>
       <div id="event-container">
-          <p id="skate-style">Skate Style: </p>
-          <p id="trick-name">Trick: </p>
-          <p id="date">Date: </p>
-          <p id="link">Link: </p>
-          <p id="notes">Notes: </p>
+          <div>
+            <p id="skate-style">Skate Style: </p>
+            <p id="trick-name">Trick: </p>
+            <p id="date">Date: </p>
+            <p id="link-container">Link: <a id="link"></a></p>
+            <p id="notes">Notes: </p>
+          </div>
           <img id="trick-media"/>
       </div>
 
