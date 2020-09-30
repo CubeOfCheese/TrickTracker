@@ -9,6 +9,10 @@ function loadResults() {
       timeline.appendChild(createTrickElement(trick, counter));
       counter++;
     })
+  })
+  .then(() => {
+    var timelineContainer = document.getElementById("timeline-container");
+    timelineContainer.scrollLeft = timelineContainer.scrollHeight + window.innerWidth/2;
   });
   fetch('/bio-get').then(response => response.json()).then((bioInformation) => {
     if (bioInformation.name === '') {
@@ -41,7 +45,12 @@ function displayTrick(nodeId) {
     document.getElementById("skate-style").innerText = "Skate Style: " + trick.skate_style;
     document.getElementById("trick-name").innerText = "Trick: " + trick.trick_name;
     document.getElementById("date").innerText = "Date: " + date.toDateString();
-    document.getElementById("link").innerText = "Link: " + trick.link;
+    document.getElementById("link").href = trick.link;
+    document.getElementById("link").textContent = trick.link;
     document.getElementById("notes").innerText = "Notes: " + trick.notes;
-    document.getElementById("trick-media").setAttribute("src", trick.trick_media);
+    if (trick.trick_media) {
+        document.getElementById("trick-media").setAttribute("src", trick.trick_media);
+    } else {
+        document.getElementById("trick-media").setAttribute("src", "");
+    }
 }

@@ -6,36 +6,48 @@ body {
     width: 100%;
     height: 100%;
     margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 #timeline-container {
-    display: inline;
-    position: absolute;
-    right: calc(50vw + 2em);
-    top: 50%;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    overflow-x: scroll;
 }
 #timeline-add-node {
     width: 5vw;
+    margin-right: calc(50vw - 23.375px);
 }
 .timeline-node {
+    display: inline-block;
     width: calc(5vw * 1.76); /* makes the node circle the same width as add-node circle */
     cursor: pointer;
 }
 #event-add-button {
     cursor: pointer;
-    position: absolute;
 }
 #event-add-button > * {
     text-decoration: none;
     color: black;
 }
 #timeline {
-    display: inline;
+    display: flex;
+    overflow: visible;
 }
 #event-container {
-    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     background-color: #f1f1f1;
     border-top: black solid 1px;
     bottom: 0px;
+}
+#trick-media {
+    max-height: 30vh;
+    max-width: 65vw;
+    padding: 30px;
 }
