@@ -46,6 +46,7 @@ function displayTrick(nodeId) {
     document.getElementById("trick-name").innerText = "Trick: " + trick.trick_name;
     document.getElementById("date").innerText = "Date: " + date.toDateString();
     document.getElementById("link").href = trick.link;
+    document.getElementById("link").textContent = trick.link;
     document.getElementById("notes").innerText = "Notes: " + trick.notes;
     if (trick.trick_media) {
         document.getElementById("trick-media").setAttribute("src", trick.trick_media);
